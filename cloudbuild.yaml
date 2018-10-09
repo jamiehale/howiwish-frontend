@@ -7,4 +7,4 @@ steps:
 steps:
 - name: gcr.io/cloud-builders/gcloud
   entrypoint: gsutil
-  args: ['rsync', '-m', '-d', '-r', 'build/*', 'gs://com-howiwish']
+  args: ['rsync', '-m', '-d', '-r', 'build/', 'gs://com-howiwish']
