@@ -4,7 +4,7 @@ steps:
 - name: 'node:10.10.0'
   entrypoint: yarn
   args: ['build']
-  env: ['PUBLIC_URL=/com-howiwish']
+  env: ['PUBLIC_URL=/$_PUBLIC_URL']
 - name: gcr.io/cloud-builders/gcloud
   entrypoint: gsutil
-  args: ['-m', 'rsync', '-r', '-d', 'build/', 'gs://com-howiwish']
+  args: ['-m', 'rsync', '-r', '-d', 'build/', 'gs://$_DEPLOY_BUCKET']
