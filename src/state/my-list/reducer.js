@@ -8,6 +8,13 @@ const initialState = [
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.MY_LIST_ADD_ITEM: {
+      const { item } = action.payload;
+      return [
+        ...state,
+        item,
+      ];
+    }
     default: {
       return state;
     }
