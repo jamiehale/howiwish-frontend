@@ -1,15 +1,12 @@
 import React from 'react';
 import List from '../../components/List';
 import ListItem from '../../components/ListItem';
-
-const myListItems = [
-  'A thing',
-  'Another thing',
-  'A third thing',
-];
+import useMyList from '../../hooks/my-list';
 
 const MyListPage = () => {
-  const items = myListItems.map((item, i) => (
+  const [myList] = useMyList();
+
+  const items = myList.map((item, i) => (
     <ListItem key={i}>{item}</ListItem>
   ));
 
