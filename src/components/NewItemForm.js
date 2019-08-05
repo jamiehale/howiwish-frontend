@@ -1,6 +1,8 @@
 import React from 'react';
 import useForm from '../hooks/form';
+import useAutofocus from '../hooks/autofocus';
 import TextInput from './TextInput';
+import TextArea from './TextArea';
 import Form from './Form';
 import Label from './Label';
 import SubmitButton from './SubmitButton';
@@ -10,11 +12,13 @@ import { URL_REGEX } from '../utils/constants';
 
 const formConfig = (onNewItem) => ({
   onSubmit: (values) => {
-    onNewItem(values.name);
+    onNewItem(values);
   },
   fields: {
     name: {
       isRequired: 'Provide a name for your wish list item',
+    },
+    description: {
     },
     url: {
       matchesRegex: {
@@ -34,6 +38,7 @@ const NewItemForm = ({
     propsForField,
     errorForField,
   } = useForm(formConfig(onNewItem));
+  const ref = useAutofocus();
 
   return (
     <Form
@@ -42,9 +47,21 @@ const NewItemForm = ({
       <div>
         <Label htmlFor="name">
           Name:
-          <TextInput {...propsForField('name')} />
+          <TextInput
+            ref={ref}
+            {...propsForField('name')}
+          />
           {errorForField('name') && (
             <p>{errorForField('name')}</p>
+          )}
+        </Label>
+      </div>
+      <div>
+        <Label htmlFor="description">
+          Description:
+          <TextArea {...propsForField('description')} />
+          {errorForField('description') && (
+            <p>{errorForField('description')}</p>
           )}
         </Label>
       </div>

@@ -14,9 +14,18 @@ export const loadSuccess = (items) => ({
 
 export const loadFailure = errorAction(actionTypes.MY_LIST_LOAD_FAILURE);
 
-export const addItem = (item) => ({
-  type: actionTypes.MY_LIST_ADD_ITEM,
+export const addItemRequest = (item) => ({
+  type: actionTypes.MY_LIST_ADD_ITEM_REQUEST,
   payload: {
     item,
   },
 });
+
+export const addItemSuccess = (item) => ({
+  type: actionTypes.MY_LIST_ADD_ITEM_SUCCESS,
+  payload: {
+    item,
+  },
+});
+
+export const addItemFailure = errorAction(actionTypes.MY_LIST_ADD_ITEM_FAILURE);

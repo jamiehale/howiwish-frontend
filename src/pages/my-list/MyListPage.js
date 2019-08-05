@@ -5,6 +5,22 @@ import useMyList from '../../hooks/my-list';
 import NewItemForm from '../../components/NewItemForm';
 import Button from '../../components/Button';
 
+const ExpandingItem = ({
+  item,
+}) => {
+  const [isOpen, setOpen] = useState(false);
+
+  return isOpen ? (
+    <div>
+      <Button onClick={() => { setOpen(false); }}>Close</Button>
+      <h1>{item.name}</h1>
+      <p>Some other stuff...</p>
+    </div>
+  ) : (
+    <Button onClick={() => { setOpen(true); }}>{item.name}</Button>
+  );
+};
+
 const MyListPage = () => {
   const [myList, { addItem }] = useMyList();
   const [showForm, setShowForm] = useState(false);
@@ -15,7 +31,9 @@ const MyListPage = () => {
   };
 
   const items = myList.map((item, i) => (
-    <ListItem key={i}>{item}</ListItem>
+    <ListItem key={i}>
+      <ExpandingItem item={item} />
+    </ListItem>
   ));
 
   return (

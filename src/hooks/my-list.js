@@ -7,7 +7,7 @@ const useMyList = (reload = true) => {
   const dispatch = useDispatch();
 
   const addItem = useCallback((item) => {
-    dispatch(myListActions.addItem(item));
+    dispatch(myListActions.addItemRequest(item));
   }, [dispatch]);
 
   useEffect(() => {
