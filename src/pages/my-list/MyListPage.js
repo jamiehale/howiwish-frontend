@@ -1,11 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import List from '../../components/List';
 import ListItem from '../../components/ListItem';
 import useMyList from '../../hooks/my-list';
+import NewItemForm from '../../components/NewItemForm';
+import Button from '../../components/Button';
 
 const MyListPage = () => {
-  const [myList] = useMyList();
+  const [myList, { addItem }] = useMyList();
+  const [showForm, setShowForm] = useState(false);
+
+  const handleNewItem = (newItem) => {
+    setShowForm(false);
+    addItem(newItem);
+  };
 
   const items = myList.map((item, i) => (
     <ListItem key={i}>{item}</ListItem>
@@ -17,7 +24,14 @@ const MyListPage = () => {
       <List>
         {items}
       </List>
-      <Link to="/my-list/new">Add</Link>
+      {showForm ? (
+        <NewItemForm
+          onNewItem={handleNewItem}
+          onCancel={() => { setShowForm(false); }}
+        />
+      ) : (
+        <Button onClick={() => { setShowForm(true); }}>Add</Button>
+      )}
     </>
   );
 };

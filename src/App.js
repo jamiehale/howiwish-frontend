@@ -4,7 +4,6 @@ import { createGlobalStyle } from 'styled-components';
 import { ConnectedRouter } from 'connected-react-router';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import MyListPage from './pages/my-list/MyListPage';
-import NewMyListItemPage from './pages/new-my-list-item/NewMyListItemPage';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -25,7 +24,6 @@ const App = ({ history }) => (
       <Switch>
         <Redirect exact path="/" to="/my-list" />
         <Route exact path="/my-list" component={MyListPage} />
-        <Route exact path="/my-list/new" component={NewMyListItemPage} />
       </Switch>
     </ConnectedRouter>
   </>

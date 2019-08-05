@@ -64,6 +64,12 @@ const reducer = (state, action) => {
         },
       };
     }
+    case 'submit': {
+      return {
+        ...state,
+        submitted: true,
+      };
+    }
     default: {
       return state;
     }
@@ -99,10 +105,18 @@ const useForm = (formConfig) => {
     e.preventDefault();
     e.stopPropagation();
 
-    formConfig.onSubmit(state.fieldNames.reduce((values, name) => ({
-      ...values,
-      [name]: state.fields[name].value,
-    }), {}));
+    dispatch({
+      type: 'submit'
+    });
+
+    validateAllFields();
+
+    if (isValid()) {
+      formConfig.onSubmit(state.fieldNames.reduce((values, name) => ({
+        ...values,
+        [name]: state.fields[name].value,
+      }), {}));
+    }
   };
 
   const onChange = name => (e) => {
@@ -114,6 +128,12 @@ const useForm = (formConfig) => {
         value: e.target.value,
       },
     });
+  };
+
+  const isValid = () => state.fieldNames.reduce((isValid, fieldName) => isValid && !state.fields[fieldName].error, true);
+
+  const validateAllFields = () => {
+    state.fieldNames.forEach(validate);
   };
 
   const validate = (name) => {
