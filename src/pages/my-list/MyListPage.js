@@ -5,16 +5,29 @@ import useMyList from '../../hooks/my-list';
 import NewItemForm from '../../components/NewItemForm';
 import Button from '../../components/Button';
 
+const FormattedItem = ({
+  item,
+}) => {
+  const descriptionText = item.description.split(/[\r\n]+/).map((p, i) => <p key={i}>{p}</p>);
+
+  return (
+    <>
+      <h1>{item.name}</h1>
+      {descriptionText}
+    </>
+  );
+};
+
 const ExpandingItem = ({
   item,
 }) => {
   const [isOpen, setOpen] = useState(false);
 
+
   return isOpen ? (
     <div>
       <Button onClick={() => { setOpen(false); }}>Close</Button>
-      <h1>{item.name}</h1>
-      <p>Some other stuff...</p>
+      <FormattedItem item={item} />
     </div>
   ) : (
     <Button onClick={() => { setOpen(true); }}>{item.name}</Button>

@@ -11,6 +11,7 @@ import ButtonRow from './ButtonRow';
 import { URL_REGEX } from '../utils/constants';
 
 const formConfig = (onNewItem) => ({
+  validateOnBlur: false,
   onSubmit: (values) => {
     onNewItem(values);
   },

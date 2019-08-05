@@ -98,6 +98,11 @@ const initialState = (formConfig) => ({
   ]), []),
 });
 
+const valueFromState = ({ fields, fieldNames }) => fieldNames.reduce((values, name) => ({
+  ...values,
+  [name]: fields[name].value,
+}), {});
+
 const useForm = (formConfig) => {
   const [state, dispatch] = useReducer(loggingReducer(reducer), initialState(formConfig));
 
@@ -109,13 +114,8 @@ const useForm = (formConfig) => {
       type: 'submit'
     });
 
-    validateAllFields();
-
-    if (isValid()) {
-      formConfig.onSubmit(state.fieldNames.reduce((values, name) => ({
-        ...values,
-        [name]: state.fields[name].value,
-      }), {}));
+    if (isFormValid()) {
+      formConfig.onSubmit(valueFromState(state));
     }
   };
 
@@ -130,16 +130,18 @@ const useForm = (formConfig) => {
     });
   };
 
-  const isValid = () => state.fieldNames.reduce((isValid, fieldName) => isValid && !state.fields[fieldName].error, true);
+  const isFormValid = () => state.fieldNames.reduce((isValid, fieldName) => isValid && isFieldValid(fieldName), true);
 
-  const validateAllFields = () => {
-    state.fieldNames.forEach(validate);
-  };
+  const isFieldValid = name => validateField(name);
 
-  const validate = (name) => {
+  const runAllValidators = (name) => {
     const field = formConfig.fields[name];
     const validators = R.keys(field || {}).map(validatorName => allValidators[validatorName](field[validatorName]));
-    const error = validators.reduce((error, validator) => error || validator(state.fields[name].value), undefined);
+    return validators.reduce((error, validator) => error || validator(state.fields[name].value), undefined);
+  }
+
+  const validateField = (name) => {
+    const error = runAllValidators(name);
     if (error) {
       dispatch({
         type: 'setError',
@@ -148,19 +150,24 @@ const useForm = (formConfig) => {
           error,
         },
       });
-    } else {
-      dispatch({
-        type: 'clearError',
-        payload: {
-          name,
-        },
-      });
+
+      return false;
     }
+    dispatch({
+      type: 'clearError',
+      payload: {
+        name,
+      },
+    });
+
+    return true;
   };
 
   const onBlur = name => (e) => {
-    e.preventDefault();
-    validate(name);
+    if (state.submitted) {
+      e.preventDefault();
+      validateField(name);
+    }
   };
 
   const propsForForm = () => ({
