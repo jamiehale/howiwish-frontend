@@ -134,14 +134,14 @@ const useForm = (formConfig) => {
 
   const isFieldValid = name => validateField(name);
 
-  const runAllValidators = (name) => {
+  const runAllValidatorsOnField = (name) => {
     const field = formConfig.fields[name];
     const validators = R.keys(field || {}).map(validatorName => allValidators[validatorName](field[validatorName]));
     return validators.reduce((error, validator) => error || validator(state.fields[name].value), undefined);
   }
 
   const validateField = (name) => {
-    const error = runAllValidators(name);
+    const error = runAllValidatorsOnField(name);
     if (error) {
       dispatch({
         type: 'setError',
