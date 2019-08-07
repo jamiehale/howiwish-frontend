@@ -4,48 +4,34 @@ import ListItem from '../../components/ListItem';
 import useMyList from '../../hooks/my-list';
 import NewItemForm from '../../components/NewItemForm';
 import Button from '../../components/Button';
-
-const FormattedItem = ({
-  item,
-}) => {
-  const descriptionText = item.description.split(/[\r\n]+/).map((p, i) => <p key={i}>{p}</p>);
-
-  return (
-    <>
-      <h1>{item.name}</h1>
-      {descriptionText}
-    </>
-  );
-};
-
-const ExpandingItem = ({
-  item,
-}) => {
-  const [isOpen, setOpen] = useState(false);
-
-
-  return isOpen ? (
-    <div>
-      <Button onClick={() => { setOpen(false); }}>Close</Button>
-      <FormattedItem item={item} />
-    </div>
-  ) : (
-    <Button onClick={() => { setOpen(true); }}>{item.name}</Button>
-  );
-};
+import ExpandingItem from '../../components/ExpandingItem';
 
 const MyListPage = () => {
   const [myList, { addItem }] = useMyList();
   const [showForm, setShowForm] = useState(false);
+  const [expandedItem, setExpandedItem] = useState(-1);
 
   const handleNewItem = (newItem) => {
     setShowForm(false);
     addItem(newItem);
   };
 
+  const handleItemExpanded = (item) => () => {
+    setExpandedItem(item);
+  }
+
+  const handleShowForm = () => {
+    setExpandedItem(-1);
+    setShowForm(true);
+  };
+
   const items = myList.map((item, i) => (
     <ListItem key={i}>
-      <ExpandingItem item={item} />
+      <ExpandingItem
+        item={item}
+        expanded={i === expandedItem}
+        onItemExpanded={handleItemExpanded(i)}
+      />
     </ListItem>
   ));
 
@@ -61,7 +47,7 @@ const MyListPage = () => {
           onCancel={() => { setShowForm(false); }}
         />
       ) : (
-        <Button onClick={() => { setShowForm(true); }}>Add</Button>
+        <Button onClick={handleShowForm}>Add</Button>
       )}
     </>
   );
