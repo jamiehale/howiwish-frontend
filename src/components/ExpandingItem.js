@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from './Button';
-import FormattedItem from './FormattedItem';
 
 const ExpandingItem = ({
-  item,
+  children,
+  text,
   expanded,
-  onItemExpanded,
+  onExpand,
 }) => {
   return expanded ? (
-    <div>
-      <FormattedItem item={item} />
-    </div>
+    <>
+      {children}
+    </>
   ) : (
-    <Button onClick={onItemExpanded}>{item.name}</Button>
+    <Button onClick={onExpand}>{text}</Button>
   );
 };
 
