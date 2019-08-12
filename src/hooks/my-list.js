@@ -10,6 +10,10 @@ const useMyList = (reload = true) => {
     dispatch(myListActions.addItemRequest(item));
   }, [dispatch]);
 
+  const updateItem = useCallback((id, item) => {
+    dispatch(myListActions.updateItemRequest(id, item));
+  }, [dispatch]);
+
   useEffect(() => {
     if (reload) {
       dispatch(myListActions.loadRequest());
@@ -22,6 +26,7 @@ const useMyList = (reload = true) => {
     myList,
     {
       addItem,
+      updateItem,
     }
   ];
 };

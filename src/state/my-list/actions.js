@@ -29,3 +29,21 @@ export const addItemSuccess = (item) => ({
 });
 
 export const addItemFailure = errorAction(actionTypes.MY_LIST_ADD_ITEM_FAILURE);
+
+export const updateItemRequest = (id, item) => ({
+  type: actionTypes.MY_LIST_UPDATE_ITEM_REQUEST,
+  payload: {
+    id,
+    item,
+  },
+});
+
+export const updateItemSuccess = (item) => ({
+  type: actionTypes.MY_LIST_UPDATE_ITEM_SUCCESS,
+  payload: {
+    item,
+  },
+});
+
+export const updateItemFailure = errorAction(actionTypes.MY_LIST_UPDATE_ITEM_FAILURE);
+

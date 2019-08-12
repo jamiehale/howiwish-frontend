@@ -1,59 +1,52 @@
 import React, { useState } from 'react';
 import * as R from 'ramda';
-import List from '../../components/List';
-import ListItem from '../../components/ListItem';
 import useMyList from '../../hooks/my-list';
 import NewItemForm from '../../components/NewItemForm';
+import EditItemForm from '../../components/EditItemForm';
 import Button from '../../components/Button';
-import ExpandingItem from '../../components/ExpandingItem';
 import FormattedItem from '../../components/FormattedItem';
+import ExpandableList from '../../components/ExpandableList';
 
-const ExpandableList = ({
-  items,
-  itemToName,
-  renderItem,
+const EditableItem = ({
+  item,
+  onUpdateItem,
 }) => {
-  const [expandedItem, setExpandedItem] = useState(-1);
+  const [editing, setEditing] = useState(false);
 
-  const handleExpandItem = (item) => () => {
-    setExpandedItem(item);
+  const handleUpdateItem = (id, updatedItem) => {
+    setEditing(false);
+    onUpdateItem(id, updatedItem);
   };
 
-  const listItems = items.map((item, i) => (
-    <ListItem key={i}>
-      <ExpandingItem
-        text={itemToName(item)}
-        expanded={i === expandedItem}
-        onExpand={handleExpandItem(i)}
-      >
-        {renderItem(item)}
-      </ExpandingItem>
-    </ListItem>
-  ));
-
-  return (
-    <List>
-      {listItems}
-    </List>
-  )
+  return editing ? (
+    <EditItemForm
+      item={item}
+      onUpdateItem={handleUpdateItem}
+      onCancel={() => { setEditing(false); }}
+    />
+  ) : (
+    <>
+      <Button onClick={() => { setEditing(true); }}>Edit</Button>
+      <FormattedItem
+        item={item}
+      />
+    </>
+  );
 };
 
 const ItemList = ({
   items,
   onUpdateItem,
 }) => {
-  const handleUpdateItem = (newItem) => {
-    onUpdateItem(newItem);
-  };
 
   return (
     <ExpandableList
       items={items}
-      itemToName={R.prop('name')}
+      renderName={R.prop('name')}
       renderItem={(item) => (
-        <FormattedItem
+        <EditableItem
           item={item}
-          onUpdateItem={handleUpdateItem}
+          onUpdateItem={onUpdateItem}
         />
       )}
     />

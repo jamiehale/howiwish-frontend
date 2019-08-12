@@ -84,12 +84,12 @@ const loggingReducer = reducer => (state, action) => {
   return newState;
 };
 
-const initialState = (formConfig) => ({
+const initialState = (formConfig, initialValues) => ({
   submitted: false,
   fields: R.keys(formConfig.fields).reduce((fields, name) => ({
     ...fields,
     [name]: {
-      value: '',
+      value: initialValues[name] || '',
     },
   }), {}),
   fieldNames: R.keys(formConfig.fields).reduce((names, name) => ([
@@ -103,8 +103,8 @@ const valueFromState = ({ fields, fieldNames }) => fieldNames.reduce((values, na
   [name]: fields[name].value,
 }), {});
 
-const useForm = (formConfig) => {
-  const [state, dispatch] = useReducer(loggingReducer(reducer), initialState(formConfig));
+const useForm = (formConfig, initialValues = {}) => {
+  const [state, dispatch] = useReducer(loggingReducer(reducer), initialState(formConfig, initialValues));
 
   const onSubmit = (e) => {
     e.preventDefault();

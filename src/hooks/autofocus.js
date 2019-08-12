@@ -6,6 +6,7 @@ const useAutofocus = () => {
   useEffect(() => {
     if (ref.current) {
       ref.current.focus();
+      ref.current.select();
     }
   }, [ref]);
 
