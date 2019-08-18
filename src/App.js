@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { createGlobalStyle } from 'styled-components';
 import { ConnectedRouter } from 'connected-react-router';
 import { Route, Redirect, Switch } from 'react-router-dom';
-import MyListPage from './pages/my-list/MyListPage';
-import MyGroupsPage from './pages/my-groups/MyGroupsPage';
+import { allPublicRoutes, allPrivateRoutes, allAdminRoutes } from './routes/all-routes';
+import PrivateRoute from './routes/PrivateRoute';
+import AdminRoute from './routes/AdminRoute';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -18,18 +19,34 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const App = ({ history }) => (
-  <>
-    <GlobalStyle />
-    <ConnectedRouter history={history}>
-      <Switch>
-        <Redirect exact path="/" to="/my-list" />
-        <Route exact path="/my-list" component={MyListPage} />
-        <Route exact path="/my-groups" component={MyGroupsPage} />
-      </Switch>
-    </ConnectedRouter>
-  </>
-);
+const mapRoutes = (routes, RouteComponent) => routes.map(route => (
+  <RouteComponent
+    key={route.path}
+    exact
+    path={route.path}
+    component={route.component}
+  />
+));
+
+const App = ({ history }) => {
+  const publicRoutes = mapRoutes(allPublicRoutes, Route);
+  const privateRoutes = mapRoutes(allPrivateRoutes, PrivateRoute);
+  const adminRoutes = mapRoutes(allAdminRoutes, AdminRoute);
+
+  return (
+    <>
+      <GlobalStyle />
+      <ConnectedRouter history={history}>
+        <Switch>
+          <Redirect exact path="/" to="/my-list" />
+          {publicRoutes}
+          {privateRoutes}
+          {adminRoutes}
+        </Switch>
+      </ConnectedRouter>
+    </>
+  );
+};
 
 App.propTypes = ({
   history: PropTypes.object.isRequired,
