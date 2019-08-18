@@ -1,20 +1,23 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import useUser from '../hooks/user';
+import PrivateLayout from './layouts/PrivateLayout';
+import useSession from '../hooks/session';
 
 const PrivateRoute = ({
   exact,
   path,
   component: Component
 }) => {
-  const user = useUser();
+  const { isLoggedIn } = useSession();
 
   return (
     <Route
       exact={exact}
       path={path}
-      render={() => user.isLoggedIn ? (
-        <Component />
+      render={() => isLoggedIn ? (
+        <PrivateLayout
+          component={Component}
+        />
       ) : (
         <Redirect to="/login" />
       )}

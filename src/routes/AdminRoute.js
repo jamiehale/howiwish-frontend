@@ -1,20 +1,23 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import useUser from '../hooks/user';
+import AdminLayout from './layouts/AdminLayout';
+import useSession from '../hooks/session';
 
 const AdminRoute = ({
   exact,
   path,
   component: Component
 }) => {
-  const user = useUser();
+  const { isAdmin } = useSession();
 
   return (
     <Route
       exact={exact}
       path={path}
-      render={() => user.isAdmin ? (
-        <Component />
+      render={() => isAdmin ? (
+        <AdminLayout
+          component={Component}
+        />
       ) : (
         <Redirect to="/" />
       )}
