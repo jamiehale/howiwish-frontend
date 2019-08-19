@@ -1,17 +1,19 @@
 import React from 'react';
 import useSession from '../../hooks/session';
-import Button from '../../components/Button';
+import LoginForm from './LoginForm';
 
 const LoginPage = () => {
   const { login } = useSession();
 
-  const handleClickLogin = () => {
+  const handleLogin = () => {
     login();
   };
   
   return (
     <>
-      <Button onClick={handleClickLogin}>Login</Button>
+      <LoginForm
+        onLogin={handleLogin}
+      />
     </>
   );
 };
