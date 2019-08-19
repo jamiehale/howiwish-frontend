@@ -4,9 +4,6 @@ import { createGlobalStyle } from 'styled-components';
 import { ConnectedRouter } from 'connected-react-router';
 import { Redirect, Switch } from 'react-router-dom';
 import allRoutes from './routes/all-routes';
-import PublicRoute from './routes/PublicRoute';
-import PrivateRoute from './routes/PrivateRoute';
-import AdminRoute from './routes/AdminRoute';
 
 const GlobalStyle = createGlobalStyle`
   body {

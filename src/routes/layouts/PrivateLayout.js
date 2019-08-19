@@ -3,9 +3,11 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import useSession from '../../hooks/session';
 import Button from '../../components/Button';
+import List from '../../components/List';
+import ListItem from '../../components/ListItem';
 
 const Container = styled.div`
-  max-width: 60ch;
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
@@ -43,19 +45,19 @@ const PrivateLayout = ({
         <Sidebar>
           <h1>A Thing</h1>
           <nav>
-            <ul>
-              <li>
+            <List>
+              <ListItem>
                 <Link to="/my-list">My List</Link>
-              </li>
-              <li>
+              </ListItem>
+              <ListItem>
                 <Button onClick={handleClickLogout}>Logout</Button>
-              </li>
+              </ListItem>
               {isAdmin && (
-                <li>
+                <ListItem>
                   <Link to="/admin">Admin</Link>
-                </li>
+                </ListItem>
               )}
-            </ul>
+            </List>
           </nav>
         </Sidebar>
         <Body>

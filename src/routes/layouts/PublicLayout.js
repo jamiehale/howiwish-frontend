@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const Container = styled.div`
-  max-width: 60ch;
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
 `;

@@ -1,15 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
 import PrivateLayout from './PrivateLayout';
+
+const Container = styled.div`
+  border-top: 16px solid red;
+`;
 
 const AdminLayout = ({
   component: Component
 }) => (
-  <div>
-    <h1>Admin Layout</h1>
+  <Container>
     <PrivateLayout
       component={Component}
     />
-  </div>
+  </Container>
 );
 
 export default AdminLayout;
