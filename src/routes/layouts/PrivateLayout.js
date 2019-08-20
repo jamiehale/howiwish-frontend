@@ -33,7 +33,7 @@ const Body = styled.div`
 const PrivateLayout = ({
   component: Component
 }) => {
-  const { isAdmin, logout } = useSession();
+  const { logout } = useSession();
 
   const handleClickLogout = () => {
     logout();
@@ -52,11 +52,6 @@ const PrivateLayout = ({
               <ListItem>
                 <Button onClick={handleClickLogout}>Logout</Button>
               </ListItem>
-              {isAdmin && (
-                <ListItem>
-                  <Link to="/admin">Admin</Link>
-                </ListItem>
-              )}
             </List>
           </nav>
         </Sidebar>

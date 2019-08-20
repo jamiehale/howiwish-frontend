@@ -7,6 +7,7 @@ import Form from '../../components/Form';
 import Label from '../../components/Label';
 import SubmitButton from '../../components/SubmitButton';
 import ButtonRow from '../../components/ButtonRow';
+import FieldName from '../../components/FieldName';
 
 const formConfig = onLogin => ({
   validateOnBlur: false,
@@ -39,10 +40,11 @@ const LoginForm = ({
     >
       <div>
         <Label htmlFor="email">
-          Email:
+          <FieldName>Email:</FieldName>
           <TextInput
             ref={ref}
             {...propsForField('email')}
+            autocorrect="off"
           />
           {errorForField('email') && (
             <p>{errorForField('email')}</p>
@@ -51,7 +53,7 @@ const LoginForm = ({
       </div>
       <div>
         <Label htmlFor="password">
-          Password:
+          <FieldName>Password:</FieldName>
           <PasswordInput
             ref={ref}
             {...propsForField('password')}
@@ -62,7 +64,7 @@ const LoginForm = ({
         </Label>
       </div>
       <ButtonRow>
-        <SubmitButton>Login</SubmitButton>
+        <SubmitButton>Sign in</SubmitButton>
       </ButtonRow>
     </Form>
   );

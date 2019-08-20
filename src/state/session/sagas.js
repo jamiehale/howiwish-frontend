@@ -7,7 +7,6 @@ import * as sessionActions from './actions';
 function* createSession() {
   yield put(sessionActions.createSuccess({
     id: uuidv4(),
-    isAdmin: true,
   }));
   yield put(push('/my-list'));
 }

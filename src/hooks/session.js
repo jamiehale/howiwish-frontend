@@ -15,11 +15,9 @@ const useSession = () => {
   }, [dispatch]);
 
   const isLoggedIn = useSelector(sessionSelectors.isLoggedIn);
-  const isAdmin = useSelector(sessionSelectors.isAdmin);
 
   return {
     isLoggedIn,
-    isAdmin,
     login,
     logout,
   };
