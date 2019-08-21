@@ -50,6 +50,9 @@ const PrivateLayout = ({
                 <Link to="/my-list">My List</Link>
               </ListItem>
               <ListItem>
+                <Link to="/my-groups">My Groups</Link>
+              </ListItem>
+              <ListItem>
                 <Button onClick={handleClickLogout}>Logout</Button>
               </ListItem>
             </List>
