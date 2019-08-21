@@ -12,7 +12,7 @@ const useMyGroup = (groupId, reload = true) => {
     }
   }, [dispatch, reload]);
 
-  const group = useSelector(state => myGroupsSelectors.getMyGroup(state, groupId));
+  const group = useSelector(state => myGroupsSelectors.getMyGroup(state)(groupId));
 
   return {
     group,

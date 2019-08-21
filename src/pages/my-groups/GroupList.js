@@ -12,7 +12,7 @@ const GroupList = ({
       items={groups}
       renderName={R.prop('name')}
       renderItem={(group) => (
-        <Link to={`/groups/${group.id}`}><h3>{group.name}</h3></Link>
+        <Link to={`/my-groups/${group.id}`}><h3>{group.name}</h3></Link>
       )}
     />
   );

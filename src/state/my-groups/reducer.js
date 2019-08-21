@@ -6,14 +6,17 @@ const groups = [
   {
     id: uuidv4(),
     name: 'Hales of Markham',
+    description: 'Just some guys.',
   },
   {
     id: uuidv4(),
     name: 'Hales Sr.',
+    description: 'Ya shkii da mountain down, ya?',
   },
   {
     id: uuidv4(),
     name: 'Heroux Sr.',
+    description: 'There\'s a story about that...',
   },
 ];
 
