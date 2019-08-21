@@ -1,13 +1,13 @@
 import React from 'react';
-import useForm from '../hooks/form';
-import useAutofocus from '../hooks/autofocus';
-import TextInput from './TextInput';
-import TextArea from './TextArea';
-import Form from './Form';
-import Label from './Label';
-import SubmitButton from './SubmitButton';
-import Button from './Button';
-import ButtonRow from './ButtonRow';
+import useForm from '../../hooks/form';
+import useAutofocus from '../../hooks/autofocus';
+import TextInput from '../../components/TextInput';
+import TextArea from '../../components/TextArea';
+import Form from '../../components/Form';
+import Label from '../../components/Label';
+import SubmitButton from '../../components/SubmitButton';
+import Button from '../../components/Button';
+import ButtonRow from '../../components/ButtonRow';
 
 const formConfig = (onNewGroup) => ({
   validateOnBlur: false,

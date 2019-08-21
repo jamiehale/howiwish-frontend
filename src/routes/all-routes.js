@@ -1,7 +1,7 @@
 import LoginPage from '../pages/login/LoginPage';
 import MyListPage from '../pages/my-list/MyListPage';
 import MyGroupsPage from '../pages/my-groups/MyGroupsPage';
-import GroupPage from '../pages/group/GroupPage';
+import MyGroupPage from '../pages/my-group/MyGroupPage';
 import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';
 
@@ -17,7 +17,7 @@ const allRoutes = [
     routes: [
       { path: '/my-list', component: MyListPage },
       { path: '/my-groups', component: MyGroupsPage },
-      { path: '/groups/:id', component: GroupPage },
+      { path: '/my-groups/:id', component: MyGroupPage },
     ],
   },
 ];

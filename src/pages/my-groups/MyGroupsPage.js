@@ -1,25 +1,15 @@
 import React, { useState } from 'react';
-import * as R from 'ramda';
-import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import useMyGroups from '../../hooks/my-groups';
-import NewGroupForm from '../../components/NewGroupForm';
 import Button from '../../components/Button';
-import ExpandableList from '../../components/ExpandableList';
+import GroupList from './GroupList';
+import NewGroupForm from './NewGroupForm';
 
-const GroupList = ({
-  groups,
-}) => {
-
-  return (
-    <ExpandableList
-      items={groups}
-      renderName={R.prop('name')}
-      renderItem={(group) => (
-        <Link to={`/groups/${group.id}`}><h3>{group.name}</h3></Link>
-      )}
-    />
-  );
-};
+const Container = styled.div`
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+`;
 
 const MyGroupsPage = () => {
   const [myGroups, { createGroup }] = useMyGroups();
@@ -35,7 +25,7 @@ const MyGroupsPage = () => {
   };
 
   return (
-    <>
+    <Container>
       <h1>My Groups</h1>
       <GroupList
         groups={myGroups}
@@ -48,7 +38,7 @@ const MyGroupsPage = () => {
       ) : (
         <Button onClick={handleShowForm}>Add</Button>
       )}
-    </>
+    </Container>
   );
 };
 
