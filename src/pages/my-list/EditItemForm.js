@@ -1,19 +1,19 @@
 import React from 'react';
-import useForm from '../hooks/form';
-import useAutofocus from '../hooks/autofocus';
-import TextInput from './TextInput';
-import TextArea from './TextArea';
-import Form from './Form';
-import Label from './Label';
-import SubmitButton from './SubmitButton';
-import Button from './Button';
-import ButtonRow from './ButtonRow';
-import { URL_REGEX } from '../utils/constants';
+import useForm from '../../hooks/form';
+import useAutofocus from '../../hooks/autofocus';
+import TextInput from '../../components/TextInput';
+import TextArea from '../../components/TextArea';
+import Form from '../../components/Form';
+import Label from '../../components/Label';
+import SubmitButton from '../../components/SubmitButton';
+import Button from '../../components/Button';
+import ButtonRow from '../../components/ButtonRow';
+import { URL_REGEX } from '../../utils/constants';
 
-const formConfig = (onNewItem) => ({
+const formConfig = (item, onUpdateItem) => ({
   validateOnBlur: false,
   onSubmit: (values) => {
-    onNewItem(values);
+    onUpdateItem(item.id, values);
   },
   fields: {
     name: {
@@ -30,15 +30,16 @@ const formConfig = (onNewItem) => ({
   },
 });
 
-const NewItemForm = ({
-  onNewItem,
+const EditItemForm = ({
+  item,
+  onUpdateItem,
   onCancel,
 }) => {
   const {
     propsForForm,
     propsForField,
     errorForField,
-  } = useForm(formConfig(onNewItem));
+  } = useForm(formConfig(item, onUpdateItem), item);
   const ref = useAutofocus();
 
   return (
@@ -76,11 +77,11 @@ const NewItemForm = ({
         </Label>
       </div>
       <ButtonRow>
-        <SubmitButton>Add</SubmitButton>
+        <SubmitButton>Update</SubmitButton>
         <Button onClick={onCancel}>Cancel</Button>
       </ButtonRow>
     </Form>
   );
 };
 
-export default NewItemForm;
+export default EditItemForm;

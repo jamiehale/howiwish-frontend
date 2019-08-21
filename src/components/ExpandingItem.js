@@ -6,9 +6,11 @@ const ExpandingItem = ({
   text,
   expanded,
   onExpand,
+  onClose,
 }) => {
   return expanded ? (
     <>
+      <Button onClick={onClose}>Close</Button>
       {children}
     </>
   ) : (

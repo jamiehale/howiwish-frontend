@@ -20,6 +20,7 @@ const ExpandableList = ({
         text={renderName(item)}
         expanded={i === expandedItem}
         onExpand={handleExpandItem(i)}
+        onClose={() => { setExpandedItem(-1); }}
       >
         {renderItem(item)}
       </ExpandingItem>

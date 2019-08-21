@@ -1,57 +1,15 @@
 import React, { useState } from 'react';
-import * as R from 'ramda';
+import styled from 'styled-components';
 import useMyList from '../../hooks/my-list';
-import NewItemForm from '../../components/NewItemForm';
-import EditItemForm from '../../components/EditItemForm';
 import Button from '../../components/Button';
-import FormattedItem from '../../components/FormattedItem';
-import ExpandableList from '../../components/ExpandableList';
+import NewItemForm from './NewItemForm';
+import ItemList from './ItemList';
 
-const EditableItem = ({
-  item,
-  onUpdateItem,
-}) => {
-  const [editing, setEditing] = useState(false);
-
-  const handleUpdateItem = (id, updatedItem) => {
-    setEditing(false);
-    onUpdateItem(id, updatedItem);
-  };
-
-  return editing ? (
-    <EditItemForm
-      item={item}
-      onUpdateItem={handleUpdateItem}
-      onCancel={() => { setEditing(false); }}
-    />
-  ) : (
-    <>
-      <Button onClick={() => { setEditing(true); }}>Edit</Button>
-      <FormattedItem
-        item={item}
-      />
-    </>
-  );
-};
-
-const ItemList = ({
-  items,
-  onUpdateItem,
-}) => {
-
-  return (
-    <ExpandableList
-      items={items}
-      renderName={R.prop('name')}
-      renderItem={(item) => (
-        <EditableItem
-          item={item}
-          onUpdateItem={onUpdateItem}
-        />
-      )}
-    />
-  );
-};
+const Container = styled.div`
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+`;
 
 const MyListPage = () => {
   const [myList, { addItem, updateItem }] = useMyList();
@@ -67,7 +25,7 @@ const MyListPage = () => {
   };
 
   return (
-    <>
+    <Container>
       <h1>My List</h1>
       <ItemList
         items={myList}
@@ -81,7 +39,7 @@ const MyListPage = () => {
       ) : (
         <Button onClick={handleShowForm}>Add</Button>
       )}
-    </>
+    </Container>
   );
 };
 
