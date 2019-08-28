@@ -1,5 +1,6 @@
 import SignInPage from '../pages/sign-in/SignInPage';
 import SignUpPage from '../pages/sign-up/SignUpPage';
+import InvitationPage from '../pages/invitation/InvitationPage';
 import MyListPage from '../pages/my-list/MyListPage';
 import MyGroupsPage from '../pages/my-groups/MyGroupsPage';
 import MyGroupPage from '../pages/my-group/MyGroupPage';
@@ -12,6 +13,7 @@ const allRoutes = [
     routes: [
       { path: '/sign-in', component: SignInPage },
       { path: '/sign-up', component: SignUpPage },
+      { path: '/invitation/:id', component: InvitationPage },
     ],
   },
   {
