@@ -3,7 +3,7 @@ import React from 'react';
 const FormattedItem = ({
   item,
 }) => {
-  const descriptionText = item.description.split(/[\r\n]+/).map((p, i) => <p key={i}>{p}</p>);
+  const descriptionText = item.description ? item.description.split(/[\r\n]+/).map((p, i) => <p key={i}>{p}</p>) : undefined;
 
   return (
     <>

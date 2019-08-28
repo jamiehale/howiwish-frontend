@@ -23,7 +23,7 @@ const allValidators = {
   matchesRegex,
 };
 
-const reducer = (state, action) => {
+const reducer = resetState => (state, action) => {
   switch (action.type) {
     case 'update': {
       const { name, value } = action.payload;
@@ -70,6 +70,9 @@ const reducer = (state, action) => {
         submitted: true,
       };
     }
+    case 'reset': {
+      return resetState;
+    }
     default: {
       return state;
     }
@@ -104,7 +107,13 @@ const valueFromState = ({ fields, fieldNames }) => fieldNames.reduce((values, na
 }), {});
 
 const useForm = (formConfig, initialValues = {}) => {
-  const [state, dispatch] = useReducer(loggingReducer(reducer), initialState(formConfig, initialValues));
+  const [state, dispatch] = useReducer(loggingReducer(reducer(initialState(formConfig, initialValues))), initialState(formConfig, initialValues));
+
+  const reset = () => {
+    dispatch({
+      type: 'reset',
+    });
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -116,6 +125,7 @@ const useForm = (formConfig, initialValues = {}) => {
 
     if (isFormValid()) {
       formConfig.onSubmit(valueFromState(state));
+      reset();
     }
   };
 
@@ -188,6 +198,7 @@ const useForm = (formConfig, initialValues = {}) => {
     propsForForm,
     propsForField,
     errorForField,
+    reset,
   };
 };
 
