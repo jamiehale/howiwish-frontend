@@ -33,10 +33,10 @@ const Body = styled.div`
 const PrivateLayout = ({
   component: Component
 }) => {
-  const { logout } = useSession();
+  const { signOut } = useSession();
 
-  const handleClickLogout = () => {
-    logout();
+  const handleClickSignOut = () => {
+    signOut();
   };
 
   return (
@@ -53,7 +53,7 @@ const PrivateLayout = ({
                 <Link to="/my-groups">My Groups</Link>
               </ListItem>
               <ListItem>
-                <Button onClick={handleClickLogout}>Logout</Button>
+                <Button onClick={handleClickSignOut}>Sign Out</Button>
               </ListItem>
             </List>
           </nav>

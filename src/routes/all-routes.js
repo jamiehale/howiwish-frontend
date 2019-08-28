@@ -1,4 +1,4 @@
-import LoginPage from '../pages/login/LoginPage';
+import SignInPage from '../pages/sign-in/SignInPage';
 import MyListPage from '../pages/my-list/MyListPage';
 import MyGroupsPage from '../pages/my-groups/MyGroupsPage';
 import MyGroupPage from '../pages/my-group/MyGroupPage';
@@ -9,7 +9,7 @@ const allRoutes = [
   {
     component: PublicRoute,
     routes: [
-      { path: '/login', component: LoginPage },
+      { path: '/sign-in', component: SignInPage },
     ],
   },
   {

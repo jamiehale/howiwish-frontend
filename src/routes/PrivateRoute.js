@@ -8,18 +8,18 @@ const PrivateRoute = ({
   path,
   component: Component
 }) => {
-  const { isLoggedIn } = useSession();
+  const { isSignedIn } = useSession();
 
   return (
     <Route
       exact={exact}
       path={path}
-      render={() => isLoggedIn ? (
+      render={() => isSignedIn ? (
         <PrivateLayout
           component={Component}
         />
       ) : (
-        <Redirect to="/login" />
+        <Redirect to="/sign-in" />
       )}
     />
   );

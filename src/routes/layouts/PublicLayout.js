@@ -14,7 +14,8 @@ const PublicLayout = ({
   <Container>
     <h1>Public Layout</h1>
     <nav>
-      <Link to="/login">Login</Link>
+      <Link to="/sign-in">Sign In</Link>
+      <Link to="/sign-up">Sign Up</Link>
     </nav>
     <Component />
   </Container>

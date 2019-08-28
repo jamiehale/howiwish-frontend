@@ -9,29 +9,29 @@ import SubmitButton from '../../components/SubmitButton';
 import ButtonRow from '../../components/ButtonRow';
 import FieldName from '../../components/FieldName';
 
-const formConfig = onLogin => ({
+const formConfig = onSignIn => ({
   validateOnBlur: false,
   onSubmit: (values) => {
-    onLogin(values.email, values.password);
+    onSignIn(values.email, values.password);
   },
   fields: {
     email: {
-      isRequired: 'Your email is required to login',
+      isRequired: 'Your email is required to sign in',
     },
     password: {
-      isRequired: 'Your password is required to login',
+      isRequired: 'Your password is required to sign in',
     },
   },
 });
 
-const LoginForm = ({
-  onLogin
+const SignInForm = ({
+  onSignIn
 }) => {
   const {
     propsForForm,
     propsForField,
     errorForField,
-  } = useForm(formConfig(onLogin));
+  } = useForm(formConfig(onSignIn));
   const ref = useAutofocus();
 
   return (
@@ -70,4 +70,4 @@ const LoginForm = ({
   );
 };
 
-export default LoginForm;
+export default SignInForm;

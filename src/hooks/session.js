@@ -6,20 +6,20 @@ import * as sessionSelectors from '../state/session/selectors';
 const useSession = () => {
   const dispatch = useDispatch();
 
-  const login = useCallback(() => {
+  const signIn = useCallback(() => {
     dispatch(sessionActions.createRequest());
   }, [dispatch]);
 
-  const logout = useCallback(() => {
+  const signOut = useCallback(() => {
     dispatch(sessionActions.destroyRequest());
   }, [dispatch]);
 
-  const isLoggedIn = useSelector(sessionSelectors.isLoggedIn);
+  const isSignedIn = useSelector(sessionSelectors.isSignedIn);
 
   return {
-    isLoggedIn,
-    login,
-    logout,
+    isSignedIn,
+    signIn,
+    signOut,
   };
 };
 
