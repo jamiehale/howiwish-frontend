@@ -15,9 +15,9 @@ const MyGroupsPage = () => {
   const [myGroups, { createGroup }] = useMyGroups();
   const [showForm, setShowForm] = useState(false);
 
-  const handleNewGroup = (newGroup) => {
+  const handleNewGroup = (name, description) => {
     setShowForm(false);
-    createGroup(newGroup);
+    createGroup(name, description);
   };
 
   const handleShowForm = () => {

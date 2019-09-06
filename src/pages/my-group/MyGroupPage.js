@@ -65,7 +65,6 @@ const MyGroupPage = ({
     console.log('invited:', emails);
   };
 
-  console.log(group);
   return (
     <>
       {group && (

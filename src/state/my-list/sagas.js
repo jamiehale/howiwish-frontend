@@ -9,6 +9,7 @@ function* addItem(action) {
   yield put(myListActions.addItemSuccess({
     id: uuidv4(),
     ...item,
+    comments: [],
   }));
   yield put(push('/my-list'));
 }

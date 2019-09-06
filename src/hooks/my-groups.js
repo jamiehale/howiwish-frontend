@@ -6,8 +6,8 @@ import * as myGroupsActions from '../state/my-groups/actions';
 const useMyGroups = (reload = true) => {
   const dispatch = useDispatch();
 
-  const createGroup = useCallback((group) => {
-    dispatch(myGroupsActions.createGroupRequest(group));
+  const createGroup = useCallback((name, description) => {
+    dispatch(myGroupsActions.createGroupRequest(name, description));
   }, [dispatch]);
 
   const updateGroup = useCallback((id, group) => {
@@ -16,7 +16,7 @@ const useMyGroups = (reload = true) => {
 
   useEffect(() => {
     if (reload) {
-      dispatch(myGroupsActions.loadRequest());
+      dispatch(myGroupsActions.loadAllRequest());
     }
   }, [dispatch, reload]);
 

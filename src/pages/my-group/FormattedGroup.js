@@ -2,11 +2,12 @@ import React from 'react';
 import * as R from 'ramda';
 import ListItem from '../../components/ListItem';
 import List from '../../components/List';
+import { paragraphethize } from '../../utils/format';
 
 const FormattedGroup = ({
   group,
 }) => {
-  const descriptionText = group.description.split(/[\r\n]+/).map((p, i) => <p key={i}>{p}</p>);
+  const descriptionText = paragraphethize(group.description);
 
   const hasMembers = !R.isEmpty(group.members);
 

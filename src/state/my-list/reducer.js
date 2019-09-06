@@ -2,6 +2,7 @@ import * as R from 'ramda';
 import uuidv4 from 'uuid/v4';
 import * as actionTypes from '../action-types';
 
+/*
 const items = [
   {
     id: uuidv4(),
@@ -26,6 +27,12 @@ const initialState = {
     ...idMap,
     [item.id]: item,
   }), {}),
+};
+*/
+
+const initialState = {
+  allIds: [],
+  byId: {},
 };
 
 const reducer = (state = initialState, action) => {

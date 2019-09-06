@@ -12,7 +12,7 @@ import ButtonRow from '../../components/ButtonRow';
 const formConfig = (onNewGroup) => ({
   validateOnBlur: false,
   onSubmit: (values) => {
-    onNewGroup(values);
+    onNewGroup(values.name, values.description);
   },
   fields: {
     name: {
