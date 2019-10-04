@@ -1,5 +1,4 @@
 import * as R from 'ramda';
-import uuidv4 from 'uuid/v4';
 import * as actionTypes from '../action-types';
 
 /*

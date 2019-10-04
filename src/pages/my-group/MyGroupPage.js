@@ -20,7 +20,6 @@ const InviteForm = ({
 }) => {
   const {
     propsForForm,
-    propsForField,
   } = useForm(formConfig(onInvite));
 
   return (
@@ -40,10 +39,6 @@ const ToggledComponent = ({
   render,
 }) => {
   const [isOpen, setOpen] = useState(false);
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   return isOpen ?
     render(() => { setOpen(false); })

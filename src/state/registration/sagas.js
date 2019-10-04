@@ -5,7 +5,7 @@ import * as actionTypes from '../action-types';
 import * as sessionActions from '../session/actions';
 
 function* createAccount(action) {
-  const { email, password } = action.payload;
+  // const { email, password } = action.payload;
   yield put(sessionActions.createSuccess({
     id: uuidv4(),
   }));

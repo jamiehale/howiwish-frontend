@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as myListSelectors from '../state/my-list/selectors';
 import * as myListActions from '../state/my-list/actions';
@@ -10,7 +10,7 @@ const useMyItem = (itemId, reload = true) => {
     if (reload) {
       dispatch(myListActions.loadRequest(itemId));
     }
-  }, [dispatch, reload]);
+  }, [dispatch, reload, itemId]);
 
   const item = useSelector(state => myListSelectors.getMyListItem(state)(itemId));
 

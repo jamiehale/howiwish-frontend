@@ -7,7 +7,7 @@ const useInvitationRedirector = (invitationId) => {
 
   useEffect(() => {
     dispatch(invitationActions.loadRequest(invitationId));
-  }, [invitationId]);
+  }, [dispatch, invitationId]);
 };
 
 export default useInvitationRedirector;
