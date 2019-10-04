@@ -1,6 +1,13 @@
 import React from 'react';
+import styled from 'styled-components';
 import useRegistration from '../../hooks/registration';
 import SignUpForm from './SignUpForm';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 60ch;
+`;
 
 const SignUpPage = () => {
   const { signUp } = useRegistration();
@@ -10,11 +17,11 @@ const SignUpPage = () => {
   };
   
   return (
-    <>
+    <Container>
       <SignUpForm
         onSignUp={handleSignUp}
       />
-    </>
+    </Container>
   );
 };
 

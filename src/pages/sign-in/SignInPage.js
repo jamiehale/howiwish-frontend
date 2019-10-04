@@ -1,6 +1,13 @@
 import React from 'react';
+import styled from 'styled-components';
 import useSession from '../../hooks/session';
 import SignInForm from './SignInForm';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 60ch;
+`;
 
 const SignInPage = () => {
   const { signIn } = useSession();
@@ -10,11 +17,11 @@ const SignInPage = () => {
   };
   
   return (
-    <>
+    <Container>
       <SignInForm
         onSignIn={handleSignIn}
       />
-    </>
+    </Container>
   );
 };
 

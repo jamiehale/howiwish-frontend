@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import List from './List';
+import UnorderedList from './UnorderedList';
 import ListItem from './ListItem';
 import ExpandingItem from './ExpandingItem';
 
@@ -28,9 +28,9 @@ const ExpandableList = ({
   ));
 
   return (
-    <List>
+    <UnorderedList>
       {listItems}
-    </List>
+    </UnorderedList>
   )
 };
 

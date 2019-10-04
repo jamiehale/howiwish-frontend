@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import useSession from '../../hooks/session';
 import Button from '../../components/Button';
-import List from '../../components/List';
+import UnorderedList from '../../components/UnorderedList';
 import ListItem from '../../components/ListItem';
 
 const Container = styled.div`
@@ -45,7 +45,7 @@ const PrivateLayout = ({
         <Sidebar>
           <h1>A Thing</h1>
           <nav>
-            <List>
+            <UnorderedList>
               <ListItem>
                 <Link to="/my-list">My List</Link>
               </ListItem>
@@ -55,7 +55,7 @@ const PrivateLayout = ({
               <ListItem>
                 <Button onClick={handleClickSignOut}>Sign Out</Button>
               </ListItem>
-            </List>
+            </UnorderedList>
           </nav>
         </Sidebar>
         <Body>

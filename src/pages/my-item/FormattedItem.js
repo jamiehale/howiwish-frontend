@@ -1,5 +1,5 @@
 import React from 'react';
-import List from '../../components/List';
+import UnorderedList from '../../components/UnorderedList';
 import ListItem from '../../components/ListItem';
 import Form from '../../components/Form';
 import Label from '../../components/Label';
@@ -21,9 +21,9 @@ const CommentList = ({
   ));
 
   return (
-    <List>
+    <UnorderedList>
       {commentItems}
-    </List>
+    </UnorderedList>
   );
 };
 

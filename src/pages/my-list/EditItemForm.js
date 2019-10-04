@@ -9,6 +9,8 @@ import PrimaryButton from '../../components/PrimaryButton';
 import Button from '../../components/Button';
 import ButtonRow from '../../components/ButtonRow';
 import { URL_REGEX } from '../../utils/constants';
+import FieldSet from '../../components/FieldSet';
+import Field from '../../components/Field';
 
 const formConfig = (item, onUpdateItem) => ({
   validateOnBlur: false,
@@ -46,9 +48,9 @@ const EditItemForm = ({
     <Form
       {...propsForForm()}
     >
-      <div>
-        <Label htmlFor="name">
-          Name:
+      <FieldSet>
+        <Field>
+          <Label htmlFor="name">Name</Label>
           <TextInput
             ref={ref}
             {...propsForField('name')}
@@ -56,26 +58,22 @@ const EditItemForm = ({
           {errorForField('name') && (
             <p>{errorForField('name')}</p>
           )}
-        </Label>
-      </div>
-      <div>
-        <Label htmlFor="description">
-          Description:
+        </Field>
+        <Field>
+          <Label htmlFor="description">Description</Label>
           <TextArea {...propsForField('description')} />
           {errorForField('description') && (
             <p>{errorForField('description')}</p>
           )}
-        </Label>
-      </div>
-      <div>
-        <Label htmlFor="url">
-          URL:
+        </Field>
+        <Field>
+          <Label htmlFor="url">URL</Label>
           <TextInput {...propsForField('url')} />
           {errorForField('url') && (
             <p>{errorForField('url')}</p>
           )}
-        </Label>
-      </div>
+        </Field>
+      </FieldSet>
       <ButtonRow>
         <PrimaryButton>Update</PrimaryButton>
         <Button onClick={onCancel}>Cancel</Button>

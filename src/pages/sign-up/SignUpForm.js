@@ -7,6 +7,7 @@ import Label from '../../components/Label';
 import PrimaryButton from '../../components/PrimaryButton';
 import ButtonRow from '../../components/ButtonRow';
 import FieldSet from '../../components/FieldSet';
+import Field from '../../components/Field';
 
 const formConfig = onSignUp => ({
   validateOnBlur: false,
@@ -37,9 +38,9 @@ const SignUpForm = ({
     <Form
       {...propsForForm()}
     >
-      <div>
-        <Label htmlFor="email">
-          <FieldSet>Email</FieldSet>
+      <FieldSet>
+        <Field>
+          <Label htmlFor="email">Email</Label>
           <TextInput
             ref={ref}
             {...propsForField('email')}
@@ -48,11 +49,9 @@ const SignUpForm = ({
           {errorForField('email') && (
             <p>{errorForField('email')}</p>
           )}
-        </Label>
-      </div>
-      <div>
-        <Label htmlFor="password">
-          <FieldSet>Password</FieldSet>
+        </Field>
+        <Field>
+          <Label htmlFor="password">Password</Label>
           <TextInput
             type="password"
             {...propsForField('password')}
@@ -60,10 +59,10 @@ const SignUpForm = ({
           {errorForField('password') && (
             <p>{errorForField('password')}</p>
           )}
-        </Label>
-      </div>
+        </Field>
+      </FieldSet>
       <ButtonRow>
-        <PrimaryButton>Sign up</PrimaryButton>
+        <PrimaryButton>Sign Up</PrimaryButton>
       </ButtonRow>
     </Form>
   );

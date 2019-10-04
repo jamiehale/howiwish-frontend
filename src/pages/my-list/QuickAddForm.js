@@ -7,6 +7,8 @@ import Label from '../../components/Label';
 import PrimaryButton from '../../components/PrimaryButton';
 import Button from '../../components/Button';
 import ButtonRow from '../../components/ButtonRow';
+import FieldSet from '../../components/FieldSet';
+import Field from '../../components/Field';
 
 const formConfig = (onNewItem) => ({
   validateOnBlur: false,
@@ -35,9 +37,9 @@ const QuickAddForm = ({
     <Form
       {...propsForForm()}
     >
-      <div>
-        <Label htmlFor="name">
-          Name:
+      <FieldSet>
+        <Field>
+          <Label htmlFor="name">Name</Label>
           <TextInput
             ref={ref}
             {...propsForField('name')}
@@ -45,8 +47,8 @@ const QuickAddForm = ({
           {errorForField('name') && (
             <p>{errorForField('name')}</p>
           )}
-        </Label>
-      </div>
+        </Field>
+      </FieldSet>
       <ButtonRow>
         <PrimaryButton>Add</PrimaryButton>
         <Button onClick={() => { reset(); }}>Cancel</Button>

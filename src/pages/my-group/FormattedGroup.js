@@ -1,7 +1,7 @@
 import React from 'react';
 import * as R from 'ramda';
 import ListItem from '../../components/ListItem';
-import List from '../../components/List';
+import UnorderedList from '../../components/UnorderedList';
 import { paragraphethize } from '../../utils/format';
 
 const FormattedGroup = ({
@@ -26,9 +26,9 @@ const FormattedGroup = ({
       {hasMembers ? (
         <>
           <h2>Members:</h2>
-          <List>
+          <UnorderedList>
             {memberItems}
-          </List>
+          </UnorderedList>
         </>
       ) : (
         <p>No members!</p>
