@@ -15,6 +15,10 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     font-size: 100%;
   }
+
+  * {
+    box-sizing: border-box;
+  }
 `;
 
 const mapRoutes = (routes, RouteComponent) => routes.map(route => (

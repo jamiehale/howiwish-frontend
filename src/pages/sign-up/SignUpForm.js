@@ -2,12 +2,11 @@ import React from 'react';
 import useForm from '../../hooks/form';
 import useAutofocus from '../../hooks/autofocus';
 import TextInput from '../../components/TextInput';
-import PasswordInput from '../../components/PasswordInput';
 import Form from '../../components/Form';
 import Label from '../../components/Label';
-import SubmitButton from '../../components/SubmitButton';
+import PrimaryButton from '../../components/PrimaryButton';
 import ButtonRow from '../../components/ButtonRow';
-import FieldName from '../../components/FieldName';
+import FieldSet from '../../components/FieldSet';
 
 const formConfig = onSignUp => ({
   validateOnBlur: false,
@@ -40,7 +39,7 @@ const SignUpForm = ({
     >
       <div>
         <Label htmlFor="email">
-          <FieldName>Email:</FieldName>
+          <FieldSet>Email</FieldSet>
           <TextInput
             ref={ref}
             {...propsForField('email')}
@@ -53,9 +52,9 @@ const SignUpForm = ({
       </div>
       <div>
         <Label htmlFor="password">
-          <FieldName>Password:</FieldName>
-          <PasswordInput
-            ref={ref}
+          <FieldSet>Password</FieldSet>
+          <TextInput
+            type="password"
             {...propsForField('password')}
           />
           {errorForField('password') && (
@@ -64,7 +63,7 @@ const SignUpForm = ({
         </Label>
       </div>
       <ButtonRow>
-        <SubmitButton>Sign up</SubmitButton>
+        <PrimaryButton>Sign up</PrimaryButton>
       </ButtonRow>
     </Form>
   );

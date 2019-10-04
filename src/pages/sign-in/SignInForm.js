@@ -1,13 +1,20 @@
 import React from 'react';
+import styled from 'styled-components';
 import useForm from '../../hooks/form';
 import useAutofocus from '../../hooks/autofocus';
-import TextInput from '../../components/TextInput';
-import PasswordInput from '../../components/PasswordInput';
 import Form from '../../components/Form';
+import FieldSet from '../../components/FieldSet';
+import Field from '../../components/Field';
 import Label from '../../components/Label';
-import SubmitButton from '../../components/SubmitButton';
+import TextInput from '../../components/TextInput';
 import ButtonRow from '../../components/ButtonRow';
-import FieldName from '../../components/FieldName';
+import PrimaryButton from '../../components/PrimaryButton';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 60ch;
+`;
 
 const formConfig = onSignIn => ({
   validateOnBlur: false,
@@ -35,38 +42,38 @@ const SignInForm = ({
   const ref = useAutofocus();
 
   return (
-    <Form
-      {...propsForForm()}
-    >
-      <div>
-        <Label htmlFor="email">
-          <FieldName>Email:</FieldName>
-          <TextInput
-            ref={ref}
-            {...propsForField('email')}
-            autocorrect="off"
-          />
-          {errorForField('email') && (
-            <p>{errorForField('email')}</p>
-          )}
-        </Label>
-      </div>
-      <div>
-        <Label htmlFor="password">
-          <FieldName>Password:</FieldName>
-          <PasswordInput
-            ref={ref}
-            {...propsForField('password')}
-          />
-          {errorForField('password') && (
-            <p>{errorForField('password')}</p>
-          )}
-        </Label>
-      </div>
-      <ButtonRow>
-        <SubmitButton>Sign in</SubmitButton>
-      </ButtonRow>
-    </Form>
+    <Container>
+      <Form
+        {...propsForForm()}
+      >
+        <FieldSet>
+          <Field>
+            <Label htmlFor="email">Email</Label>
+            <TextInput
+              ref={ref}
+              {...propsForField('email')}
+              autocorrect="off"
+            />
+            {errorForField('email') && (
+              <p>{errorForField('email')}</p>
+            )}
+          </Field>
+          <Field>
+            <Label htmlFor="password">Password</Label>
+            <TextInput
+              type="password"
+              {...propsForField('password')}
+            />
+            {errorForField('password') && (
+              <p>{errorForField('password')}</p>
+            )}
+          </Field>
+        </FieldSet>
+        <ButtonRow>
+          <PrimaryButton type="submit">Sign in</PrimaryButton>
+        </ButtonRow>
+      </Form>
+    </Container>
   );
 };
 

@@ -3,9 +3,9 @@ import List from '../../components/List';
 import ListItem from '../../components/ListItem';
 import Form from '../../components/Form';
 import Label from '../../components/Label';
-import FieldName from '../../components/FieldName';
+import FieldSet from '../../components/FieldSet';
 import TextArea from '../../components/TextArea';
-import SubmitButton from '../../components/SubmitButton';
+import PrimaryButton from '../../components/PrimaryButton';
 import useForm from '../../hooks/form';
 import { paragraphethize } from '../../utils/format';
 
@@ -53,7 +53,7 @@ const NewCommentForm = ({
     >
       <div>
         <Label htmlFor="body">
-          <FieldName>Comment:</FieldName>
+          <FieldSet>Comment:</FieldSet>
           <TextArea
             {...propsForField('body')}
           />
@@ -62,7 +62,7 @@ const NewCommentForm = ({
           )}
         </Label>
       </div>
-      <SubmitButton>Send</SubmitButton>
+      <PrimaryButton>Send</PrimaryButton>
     </Form>
   );
 };

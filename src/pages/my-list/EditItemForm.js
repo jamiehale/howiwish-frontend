@@ -5,7 +5,7 @@ import TextInput from '../../components/TextInput';
 import TextArea from '../../components/TextArea';
 import Form from '../../components/Form';
 import Label from '../../components/Label';
-import SubmitButton from '../../components/SubmitButton';
+import PrimaryButton from '../../components/PrimaryButton';
 import Button from '../../components/Button';
 import ButtonRow from '../../components/ButtonRow';
 import { URL_REGEX } from '../../utils/constants';
@@ -77,7 +77,7 @@ const EditItemForm = ({
         </Label>
       </div>
       <ButtonRow>
-        <SubmitButton>Update</SubmitButton>
+        <PrimaryButton>Update</PrimaryButton>
         <Button onClick={onCancel}>Cancel</Button>
       </ButtonRow>
     </Form>

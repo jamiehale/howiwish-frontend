@@ -5,7 +5,7 @@ import TextInput from '../../components/TextInput';
 import TextArea from '../../components/TextArea';
 import Form from '../../components/Form';
 import Label from '../../components/Label';
-import SubmitButton from '../../components/SubmitButton';
+import PrimaryButton from '../../components/PrimaryButton';
 import Button from '../../components/Button';
 import ButtonRow from '../../components/ButtonRow';
 
@@ -60,7 +60,7 @@ const NewGroupForm = ({
         </Label>
       </div>
       <ButtonRow>
-        <SubmitButton>Add</SubmitButton>
+        <PrimaryButton>Add</PrimaryButton>
         <Button onClick={onCancel}>Cancel</Button>
       </ButtonRow>
     </Form>

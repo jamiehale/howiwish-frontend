@@ -4,7 +4,7 @@ import useMyGroup from '../../hooks/my-group';
 import FormattedGroup from './FormattedGroup';
 import Form from '../../components/Form';
 import Button from '../../components/Button';
-import SubmitButton from '../../components/SubmitButton';
+import PrimaryButton from '../../components/PrimaryButton';
 import useForm from '../../hooks/form';
 import ButtonRow from '../../components/ButtonRow';
 
@@ -28,7 +28,7 @@ const InviteForm = ({
     >
       <ButtonRow>
         <Button onClick={onClose}>Cancel</Button>
-        <SubmitButton>Send</SubmitButton>
+        <PrimaryButton>Send</PrimaryButton>
       </ButtonRow>
     </Form>
   )
