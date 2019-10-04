@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import { throttle } from 'lodash';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import theme from './theme';
 
 import configureStore, { history, loadState, saveState } from './state';
 
@@ -15,7 +17,9 @@ store.subscribe(throttle(() => {
 
 ReactDOM.render(
   <Provider store={store}>
-    <App history={history} />
+    <ThemeProvider theme={theme}>
+      <App history={history} />
+    </ThemeProvider>
   </Provider>,
   document.getElementById('root'),
 );
