@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import useForm from '../../hooks/form';
 import useAutofocus from '../../hooks/autofocus';
 import TextInput from '../../components/TextInput';
@@ -22,6 +23,31 @@ const formConfig = (onNewItem) => ({
   },
 });
 
+const HorizontalForm = styled(Form)`
+  display: flex;
+  align-items: center;
+
+  ${FieldSet} {
+    flex-grow: 1;
+    margin-bottom: 0px;
+  }
+
+  ${Label} {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  ${PrimaryButton} {
+    margin-left: var(--s0);
+  }
+`;
+
 const QuickAddForm = ({
   onNewItem,
 }) => {
@@ -34,26 +60,24 @@ const QuickAddForm = ({
   const ref = useAutofocus();
 
   return (
-    <Form
+    <HorizontalForm
       {...propsForForm()}
     >
+      {errorForField('name') && (
+        <p>{errorForField('name')}</p>
+      )}
       <FieldSet>
         <Field>
           <Label htmlFor="name">Name</Label>
           <TextInput
             ref={ref}
+            placeholder="Add something to your list!"
             {...propsForField('name')}
           />
-          {errorForField('name') && (
-            <p>{errorForField('name')}</p>
-          )}
         </Field>
       </FieldSet>
-      <ButtonRow>
-        <PrimaryButton type="submit">Add</PrimaryButton>
-        <Button onClick={() => { reset(); }}>Cancel</Button>
-      </ButtonRow>
-    </Form>
+      <PrimaryButton type="submit">Add</PrimaryButton>
+    </HorizontalForm>
   );
 };
 
