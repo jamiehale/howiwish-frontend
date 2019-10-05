@@ -3,7 +3,7 @@ import Label from './Label';
 
 const Field = styled.div`
   ${Label} {
-    margin-bottom: 4px;
+    margin-bottom: var(--s-2);
   }
 `;
 

@@ -3,9 +3,9 @@ import styled from 'styled-components';
 const Button = styled.button.attrs({
   type: 'button',
 })`
-  padding: 8px 32px;
+  padding: var(--s-2) var(--s1);
   border-radius: 4px;
-  font-size: 1rem;
+  font-size: var(--s0);
 `;
 
 export default Button;

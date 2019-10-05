@@ -7,9 +7,9 @@ const TextInput = styled.input.attrs(({
 }))`
   display: block;
   margin: 0px;
+  padding: var(--s-3) 0px;
   width: 100%;
-  height: 2rem;
-  font-size: 1rem;
+  font-size: var(--s0);
 `;
 
 export default TextInput;

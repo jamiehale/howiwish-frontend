@@ -4,7 +4,7 @@ const ButtonRow = styled.div`
   display: flex;
 
   > * + * {
-    margin-left: 8px;
+    margin-left: var(--s-2);
   }
 `;
 

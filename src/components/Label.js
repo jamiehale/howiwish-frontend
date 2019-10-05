@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Label = styled.label`
   display: block;
-  font-weight: 600;
+  font-weight: ${props => props.theme.font.weight.bold};
 `;
 
 export default Label;

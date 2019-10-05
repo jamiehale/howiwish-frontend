@@ -6,7 +6,7 @@ import SignInForm from './SignInForm';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 60ch;
+  width: 30ch;
 `;
 
 const SignInPage = () => {

@@ -5,30 +5,28 @@ import useSession from '../../hooks/session';
 import Button from '../../components/Button';
 import UnorderedList from '../../components/UnorderedList';
 import ListItem from '../../components/ListItem';
+import { theSidebar, theCenter, theStack, theBox } from '../../every-layout';
+import ButtonRow from '../../components/ButtonRow';
 
 const Container = styled.div`
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  overflow: hidden;
-  border: 1px solid red;
+  ${theCenter('800px')}
+  ${theStack('var(--s1)')}
 `;
 
-const IntermediaryContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const Sidebar = styled.div`
-  flex-grow: 1;
-  border: 1px solid green;
-`;
+const Header = styled.div``;
 
 const Body = styled.div`
-  flex-basis: 0;
-  flex-grow: 999;
-  min-width: 50%;
+  ${theSidebar('200px', '50%', 'var(--s1)')}
 `;
+
+const InnerContainer = styled.div``;
+
+const Sidebar = styled.div`
+  ${theBox('var(--s1)', 'var(--border-thin)')}
+  ${theStack('var(--s1)')}
+`;
+
+const Content = styled.div``;
 
 const PrivateLayout = ({
   component: Component
@@ -41,27 +39,33 @@ const PrivateLayout = ({
 
   return (
     <Container>
-      <IntermediaryContainer>
-        <Sidebar>
-          <h1>A Thing</h1>
-          <nav>
-            <UnorderedList>
-              <ListItem>
-                <Link to="/my-list">My List</Link>
-              </ListItem>
-              <ListItem>
-                <Link to="/my-groups">My Groups</Link>
-              </ListItem>
-              <ListItem>
-                <Button onClick={handleClickSignOut}>Sign Out</Button>
-              </ListItem>
-            </UnorderedList>
-          </nav>
-        </Sidebar>
-        <Body>
-          <Component />
-        </Body>
-      </IntermediaryContainer>
+      <Header>
+        <h1>How I Wish...</h1>
+      </Header>
+      <Body>
+        <InnerContainer>
+          <Sidebar>
+            <nav>
+              <UnorderedList>
+                <ListItem>
+                  <Link to="/my-list">My List</Link>
+                </ListItem>
+                <ListItem>
+                  <Link to="/my-groups">My Groups</Link>
+                </ListItem>
+                <ListItem>
+                </ListItem>
+              </UnorderedList>
+            </nav>
+            <ButtonRow>
+              <Button onClick={handleClickSignOut}>Sign Out</Button>
+            </ButtonRow>
+          </Sidebar>
+          <Content>
+            <Component />
+          </Content>
+        </InnerContainer>
+      </Body>
     </Container>
   );
 };

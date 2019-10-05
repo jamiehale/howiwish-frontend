@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { theCenter, theStack } from '../../every-layout';
 
 const Container = styled.div`
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  ${theCenter('700px')}
+  ${theStack('var(--s1)')}
 `;
 
 const PublicLayout = ({
