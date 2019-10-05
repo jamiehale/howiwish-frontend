@@ -4,7 +4,7 @@ const Button = styled.button.attrs({
   type: 'button',
 })`
   padding: var(--s-2) var(--s1);
-  border-radius: 4px;
+  border-radius: 3px;
   font-size: var(--s0);
 `;
 

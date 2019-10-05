@@ -43,6 +43,7 @@ export const theStack = (space) => `
 `;
 
 const bordersFromBorderWidth = (borderWidth) => {
+  console.log(borderWidth);
   if (borderWidth) {
     return `${borderWidth} solid;`;
   }

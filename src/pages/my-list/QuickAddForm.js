@@ -50,7 +50,7 @@ const QuickAddForm = ({
         </Field>
       </FieldSet>
       <ButtonRow>
-        <PrimaryButton>Add</PrimaryButton>
+        <PrimaryButton type="submit">Add</PrimaryButton>
         <Button onClick={() => { reset(); }}>Cancel</Button>
       </ButtonRow>
     </Form>

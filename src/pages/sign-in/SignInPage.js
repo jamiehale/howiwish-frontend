@@ -2,11 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import useSession from '../../hooks/session';
 import SignInForm from './SignInForm';
+import { theStack, theCenter, theBox } from '../../every-layout';
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 30ch;
+  ${theBox('var(--s1)', 'var(--border-thin)')}
+  ${theCenter('30ch')}
+  ${theStack('var(--s1)')}
 `;
 
 const SignInPage = () => {
@@ -18,6 +19,7 @@ const SignInPage = () => {
   
   return (
     <Container>
+      <h1>Sign In</h1>
       <SignInForm
         onSignIn={handleSignIn}
       />

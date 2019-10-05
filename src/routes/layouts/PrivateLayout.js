@@ -7,6 +7,7 @@ import UnorderedList from '../../components/UnorderedList';
 import ListItem from '../../components/ListItem';
 import { theSidebar, theCenter, theStack, theBox } from '../../every-layout';
 import ButtonRow from '../../components/ButtonRow';
+import Nav from '../../components/Nav';
 
 const Container = styled.div`
   ${theCenter('800px')}
@@ -24,6 +25,7 @@ const InnerContainer = styled.div``;
 const Sidebar = styled.div`
   ${theBox('var(--s1)', 'var(--border-thin)')}
   ${theStack('var(--s1)')}
+  background: ${props => props.theme.primaryBackgroundColour};
 `;
 
 const Content = styled.div``;
@@ -45,7 +47,7 @@ const PrivateLayout = ({
       <Body>
         <InnerContainer>
           <Sidebar>
-            <nav>
+            <Nav>
               <UnorderedList>
                 <ListItem>
                   <Link to="/my-list">My List</Link>
@@ -56,7 +58,7 @@ const PrivateLayout = ({
                 <ListItem>
                 </ListItem>
               </UnorderedList>
-            </nav>
+            </Nav>
             <ButtonRow>
               <Button onClick={handleClickSignOut}>Sign Out</Button>
             </ButtonRow>
