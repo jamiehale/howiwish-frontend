@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Button from '../../components/Button';
+import { Link } from 'react-router-dom';
 import FormattedItem from './FormattedItem';
 import EditItemForm from './EditItemForm';
 
@@ -21,12 +21,12 @@ const EditableItem = ({
       onCancel={() => { setEditing(false); }}
     />
   ) : (
-    <>
-      <Button onClick={() => { setEditing(true); }}>Edit</Button>
+    <div>
+      <Link to={`my-list/${item.id}/edit`}>Edit</Link>
       <FormattedItem
         item={item}
       />
-    </>
+    </div>
   );
 };
 

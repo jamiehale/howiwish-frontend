@@ -12,6 +12,7 @@ const Container = styled.div`
 
 const MyListPage = () => {
   const [myList, { addItem, updateItem }] = useMyList();
+  console.log(myList);
 
   const handleNewItem = (newItem) => {
     addItem(newItem);
