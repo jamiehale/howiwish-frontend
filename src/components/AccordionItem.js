@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from './Button';
 
-const ExpandingItem = ({
+const AccordionItem = ({
   children,
   text,
   expanded,
@@ -18,4 +18,4 @@ const ExpandingItem = ({
   );
 };
 
-export default ExpandingItem;
+export default AccordionItem;

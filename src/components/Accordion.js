@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import UnorderedList from './UnorderedList';
 import ListItem from './ListItem';
-import ExpandingItem from './ExpandingItem';
+import AccordionItem from './AccordionItem';
 
-const ExpandableList = ({
+const Accordion = ({
   items,
   renderName,
   renderItem,
@@ -16,14 +16,14 @@ const ExpandableList = ({
 
   const listItems = items.map((item, i) => (
     <ListItem key={i}>
-      <ExpandingItem
+      <AccordionItem
         text={renderName(item)}
         expanded={i === expandedItem}
         onExpand={handleExpandItem(i)}
         onClose={() => { setExpandedItem(-1); }}
       >
         {renderItem(item)}
-      </ExpandingItem>
+      </AccordionItem>
     </ListItem>
   ));
 
@@ -34,4 +34,4 @@ const ExpandableList = ({
   )
 };
 
-export default ExpandableList;
+export default Accordion;

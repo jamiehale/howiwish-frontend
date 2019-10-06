@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import * as R from 'ramda';
-import ExpandableList from '../../components/ExpandableList';
+import Accordion from '../../components/Accordion';
 
 const GroupList = ({
   groups,
 }) => {
 
   return (
-    <ExpandableList
+    <Accordion
       items={groups}
       renderName={R.prop('name')}
       renderItem={(group) => (
